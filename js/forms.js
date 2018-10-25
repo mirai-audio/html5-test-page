@@ -9,7 +9,15 @@ formHook = function(event) {
       formId = event.target.getAttribute("id");
 
   for (var pair of FD.entries()) {
-    object[pair[0]] = pair[1];
+    var key = pair[0], value = pair[1];
+
+    if (object[key] && object[key].constructor === Array){
+      object[key].push(value);
+    } else if (object[key]) {
+      object[key] = [object[key], value];
+    } else {
+      object[key] = value;
+    }
   }
 
   submittedForms[formId] = object;
