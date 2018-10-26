@@ -1,8 +1,6 @@
-var submittedForms = {},
-    formHook,
-    loadHook;
+var submittedForms = {};
 
-formHook = function(event) {
+function formHook(event) {
   event.preventDefault();
   var object = {},
       FD = new FormData(event.target),
@@ -23,8 +21,8 @@ formHook = function(event) {
   submittedForms[formId] = object;
 }
 
-loadHook = function(event) {
-  var allForms = document.querySelectorAll(".hook-form");
+function loadHook(event) {
+  var allForms = document.querySelectorAll("form.hook-form");
   for (var i = 0; i < allForms.length; i++) {
     allForms[i].addEventListener("submit", formHook);
   }
@@ -33,5 +31,15 @@ loadHook = function(event) {
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", loadHook);
 } else {
-  loadHook(null);
+  loadHook();
+}
+
+function getForm(id, timeout = 3) {
+  if (typeof submittedForms[id] != undefined){
+    return submittedForms[id];
+  } else if (timeout == 0){
+    return null;
+  } else {
+    setTimeout(getForm(id, timeout - 0.25), 250);
+  }
 }
