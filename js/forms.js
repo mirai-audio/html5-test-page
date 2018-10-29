@@ -35,13 +35,3 @@ function loadHook(event) {
     hookedForms.push(allForms[i].getAttribute("id"));
   }
 }
-
-function getForm(id, timeout = 3) {
-  if (submittedForms[id] != null) {
-    return submittedForms[id];
-  } else if (!hookedForms.includes(id) || timeout == 0) {
-    return null;
-  } else {
-    setTimeout(getForm(id, timeout - 0.25), 250);
-  }
-}
