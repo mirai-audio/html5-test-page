@@ -1,5 +1,6 @@
 var submittedForms = {},
-    hookedForms = [];
+    hookedForms = [],
+    loaderTrigger;
 
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", loadHook);
@@ -34,4 +35,21 @@ function loadHook(event) {
     allForms[i].addEventListener("submit", formHook);
     hookedForms.push(allForms[i].getAttribute("id"));
   }
+}
+
+function pageSwitch() {
+  if (window.location.pathname === "/") {
+    window.location.pathname = "/iframe.html";
+  } else if (window.location.pathname === "/iframe.html"){
+    window.location.pathname = "/";
+  }
+}
+
+function loader() {
+  document.getElementById("loader").style.display = "block";
+  loaderTrigger = setTimeout(hide, 5000);
+}
+
+function hide() {
+  document.getElementById("loader").style.display = "none";
 }

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML5 Test Page</title>
+    <link rel="stylesheet" type="text/css" href="/css/modal.css"/>
   </head>
   <body>
     <div id="top" class="page" role="document">
@@ -444,10 +445,29 @@
             </p>
           </fieldset>
         </section>
+        <section id="page-change">
+          <header><h1>Page Change</h1></header>
+          <fieldset id="page_change__trigger">
+            <legend>Trigger a page change</legend>
+            <p>
+              <button type="button" id="page_change_button" onclick="pageSwitch();">Change Page</button>
+            </p>
+          </fieldset>
+        </section>
+        <section id="loader_section">
+          <header><h1>Loader</h1></header>
+            <fieldset id="loader__trigger">
+            <legend>Trigger a loader</legend>
+            <p>
+              <button type="button" id="loader_button" onclick="loader();">Loader</button>
+            </p>
+            <div id="loader"></div>
+          </fieldset>
+        </section>
       <footer role="contentinfo">
         <p>Made by <a href="http://twitter.com/cbracco">@cbracco</a>. Code on <a href="http://github.com/cbracco/html5-test-page">GitHub</a>.</p>
       </footer>
     </div>
-    <script src="./js/forms.js"></script>
+    <script src="/js/page.js"></script>
   </body>
 </html>
